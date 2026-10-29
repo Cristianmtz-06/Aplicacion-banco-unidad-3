@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Cliente - SecureBank</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+
+            <h1>👤 Portal de Clientes</h1>
+
+            <p>Consulta de información bancaria</p>
+            <br>
+
+            <a href="/" class="btn-regresar">
+                🏠 Inicio
+            </a>
+        </header>
+
+        <div class="form-section">
+
+            <h2>Buscar Cliente</h2>
+
+            <input
+                type="number"
+                id="clienteId"
+                placeholder="Ingrese ID del cliente">
+
+            <button onclick="buscarCliente()">
+
+                Consultar
+
+            </button>
+
+        </div>
+
+        <div
+            id="resultado"
+            class="form-section"
+            style="display:none;">
+
+        </div>
+
+        <br>
+
+        
+
+    </div>
+
+    <script>
+
+        async function buscarCliente() {
+
+            const id =
+                document.getElementById("clienteId").value;
+
+            const respuesta =
+                await fetch("/api/clientes");
+
+            const clientes =
+                await respuesta.json();
+
+            const cliente =
+                clientes.find(
+                    c => c.id == id
+                );
+
+            const resultado =
+                document.getElementById("resultado");
+
+            if (!cliente) {
+
+                resultado.style.display = "block";
+
+                resultado.innerHTML = `
+                    <h3>
+                        Cliente no encontrado
+                    </h3>
+                `;
+
+                return;
+            }
+
+            resultado.style.display = "block";
+
+            resultado.innerHTML = `
+                <h2>Información del Cliente</h2>
+
+                <p>
+                    <strong>Nombre:</strong>
+                    ${cliente.nombre}
+                </p>
+
+                <p>
+                    <strong>Correo:</strong>
+                    ${cliente.correo}
+                </p>
+
+                <p>
+                    <strong>Teléfono:</strong>
+                    ${cliente.telefono}
+                </p>
+
+                <p>
+                    <strong>Cuenta:</strong>
+                    ${cliente.cuenta}
+                </p>
+
+                <p>
+                    <strong>Tipo Cliente:</strong>
+                    ${cliente.tipoCliente}
+                </p>
+
+                <p>
+                    <strong>Fecha Registro:</strong>
+                    ${cliente.fechaRegistro}
+                </p>
+            `;
+        }
+
+    </script>
+
+</body>
+
+</html>

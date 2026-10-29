@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureBank - Gestión de Clientes</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+       <header>
+            <h1>🏦 SecureBank</h1>
+            <p>Portal de Gestión Bancaria SecureBank</p>
+
+            <br>
+
+            <a href="/" class="btn-regresar">
+                🏠 Inicio
+            </a>
+
+        </header>
+
+        <div class="info-box">
+
+            <strong>Descripción del proyecto:</strong>
+
+            Esta aplicación fue desarrollada para la gestión de clientes bancarios.
+            El sistema servirá como entorno base para la demostración de una vulnerabilidad de cadena
+            de suministro de software mediante una dependencia externa comprometida.
+
+        </div>
+
+        <section class="dashboard">
+
+            <div class="card">
+                <h3>Total Clientes</h3>
+                <span id="totalClientes">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Ahorro</h3>
+                <span id="ahorro">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Nómina</h3>
+                <span id="nomina">0</span>
+            </div>
+
+            <div class="card">
+                <h3>Empresarial</h3>
+                <span id="empresarial">0</span>
+            </div>
+
+        </section>
+
+        <section class="form-section">
+
+            <h2>Registrar Cliente</h2>
+
+            <form id="clienteForm">
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Nombre completo"
+                    required
+                >
+
+                <input
+                    type="email"
+                    id="correo"
+                    placeholder="Correo electrónico"
+                    required
+                >
+
+                <input
+                    type="text"
+                    id="telefono"
+                    placeholder="Teléfono"
+                    required
+                >
+
+                <select id="cuenta">
+
+                    <option value="Ahorro">
+                        Cuenta de Ahorro
+                    </option>
+
+                    <option value="Nómina">
+                        Cuenta Nómina
+                    </option>
+
+                    <option value="Empresarial">
+                        Cuenta Empresarial
+                    </option>
+
+                </select>
+
+                <select id="tipoCliente">
+
+                    <option value="Normal">
+                        Cliente Normal
+                    </option>
+
+                    <option value="Premium">
+                        Cliente Premium
+                    </option>
+
+                    <option value="Empresarial">
+                        Cliente Empresarial
+                    </option>
+
+                </select>
+
+                <button type="submit">
+                    Registrar Cliente
+                </button>
+
+            </form>
+
+        </section>
+
+        <section>
+
+            <h2>Clientes Registrados</h2>
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Cuenta</th>
+                        <th>Tipo Cliente</th>
+                        <th>Fecha</th>
+                    </tr>
+
+                </thead>
+
+                <tbody id="tablaClientes">
+
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </div>
+
+    <script src="/js/dashboard.js"></script>
+
+</body>
+</html>
